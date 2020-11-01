@@ -99,9 +99,11 @@ const randomQuestion = () => {
 const checkAnswer = el => {
     if(el.target.dataset.id == questions[indexOfQuestion].rightAnswer) {
         el.target.classList.add('correct');
+        updateAnswerTracker('correct');
         score++;
     } else {
         el.target.classList.add('wrong');
+        updateAnswerTracker('wrong');
     }
     disabledOptions();
 }
@@ -127,6 +129,13 @@ const answerTracker = () => {
         answersTracker.appendChild(div);
     })
 };
+
+const updateAnswerTracker = status => {
+    console.log(answersTracker.children);
+    console.log(status);
+    console.log(indexOfPage);
+    answersTracker.children[indexOfPage - 1].classList.add(`${status}`);
+}
 
 for(option of optionElements) {
     option.addEventListener('click', event => checkAnswer(event));

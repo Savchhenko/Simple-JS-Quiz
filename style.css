@@ -71,6 +71,14 @@ body {
     pointer-events: none;
 }
 
+#answers-tracker div.correct {
+    background-color: green;
+}
+
+#answers-tracker div.wrong {
+    background-color: red;
+}
+
 .button #btn-next {
     padding: 10px 50px;
     background-color: darkcyan;
@@ -81,7 +89,7 @@ body {
     border: none;
 }
 
-#answers-tracker h3 {
+.button h3 {
     border-bottom: 1px solid #ccc;
 }
 
