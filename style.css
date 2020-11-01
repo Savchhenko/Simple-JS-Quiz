@@ -1,23 +1,102 @@
 body {
+    margin: 0;
     background-color: lightseagreen;
-    font-size: larger ;
+    font-size: larger;
+    font-family: sans-serif;
+}
+
+* {
+    box-sizing: border-box; /* размер элемента будет включать в себя отступы */
 }
 
 .quiz-container {
-    position: absolute;
-    background-color: #fff;
+    position: absolute; 
     top: 30px;
-    left: 360px;
+    left: 365px;
     display: flex ;
     flex-direction: column;
+    background-color: #fff;
     width: 600px;
-    height: 450px;
+    min-height: 490px;
     border-radius: 10px;
-    padding: 20px;
-    margin: 30px, 70px ;
+    padding: 25px;
+    margin: 30px, auto ;
 }
 
-.option {
+.question-number h3 {
+    font-weight: bold;
+    color: darkslateblue ;
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#question {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 15px 0;
+    margin-bottom: 10px;
+}
+
+.options {
+    margin-bottom: 15px;
+}
+
+.options div {
+    background-color: #ccc;
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all .2s ease-in-out; 
+}
+
+.options div:hover {
+    background-color: #ccc;
+}
+
+.options div.correct {
+    color: #fff;
+    background-color: green;
+}
+
+.options div.wrong {
+    color: #fff;
+    background-color: red;
+}
+
+.options div.disabled {
+    pointer-events: none;
+}
+
+.button #btn-next {
+    padding: 10px 50px;
+    background-color: darkcyan;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+#answers-tracker h3 {
+    border-bottom: 1px solid #ccc;
+}
+
+#answers-tracker div {
+    height: 40px;
+    width: 40px;
+    background-color: #ccc;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
+
+/* .option {
     background-color: lightsteelblue ;
     display: flex;
     align-items: center;
@@ -25,16 +104,6 @@ body {
     min-height: 50px;
     padding-left: 10px;
     cursor: pointer;
-}
-
-#question {
-    font-weight: bold;
-    margin: 20px, 0px;
-}
-
-.question-number {
-    font-weight: bold;
-    color: darkslateblue ;
 }
 
 .question-number, #question, .option, .options, #btn-next {
@@ -52,4 +121,4 @@ body {
     box-shadow: none;
     border: none;
     cursor: pointer;
-}
+} */

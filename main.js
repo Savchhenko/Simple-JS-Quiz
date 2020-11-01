@@ -9,7 +9,7 @@ const optionElements = document.querySelectorAll('.option');
 const question = document.getElementById('question'),
         numberOfQuestion = document.getElementById('number-of-question'),
         numberOfAllQuestion = document.getElementById('number-of-all-questions'),
-        answerTraker = document.getElementById('answers-tracker'),
+        answersTracker = document.getElementById('answers-tracker'),
         btnNext = document.getElementById('btn-next'),
         correctAnswer = document.getElementById('correct-answer'),
         numberOfAllQuestion2 = document.getElementById('number-pf-all-questions-2'),
@@ -96,11 +96,48 @@ const randomQuestion = () => {
     completedAnswers.push(indexOfQuestion);
 };
 
+const checkAnswer = el => {
+    if(el.target.dataset.id == questions[indexOfQuestion].rightAnswer) {
+        el.target.classList.add('correct');
+        score++;
+    } else {
+        el.target.classList.add('wrong');
+    }
+    disabledOptions();
+}
+
+const disabledOptions = () => {
+    optionElements.forEach(item => {
+        item.classList.add('disabled');
+        if(item.dataset.id == questions[indexOfQuestion].rightAnswer) {
+            item.classList.add('correct');
+        }
+    });
+};
+
+const enableOptions = () => {
+    optionElements.forEach(item => {
+        item.classList.remove('disabled', 'wrong', 'correct');
+    })
+};
+
+const answerTracker = () => {
+    questions.forEach(() => {
+        const div = document.createElement('div');
+        answersTracker.appendChild(div);
+    })
+};
+
+for(option of optionElements) {
+    option.addEventListener('click', event => checkAnswer(event));
+}
+
 const quizOver = () => {
     console.log('Game over.');
 };
 
 window.addEventListener('load', () => {
     randomQuestion();
+    answerTracker();
 });
 
