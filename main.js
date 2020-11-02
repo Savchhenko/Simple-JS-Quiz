@@ -62,14 +62,14 @@ const questions = [
         rightAnswer: 1
     },
     {
-        question: 'В какой области НЕ применяется JS? ',
+        question: 'Что из перечисленного НЕ является ложным значением?',
         options: [
-            'База данных',
-            'Искусственный интеллект',
-            'Нейролингвистическое программирование',
-            'Мобильные приложения',
+            'undefined',
+            'NaN',
+            'const a = 0',
+            'let string = "Hello World!"',
         ],
-        rightAnswer: 2
+        rightAnswer: 3
     } 
 ];
 
