@@ -10,17 +10,17 @@ body {
 }
 
 .quiz-container {
-    position: absolute; 
+
+    position: fixed; 
     top: 30px;
     left: 365px;
-    display: flex ;
-    flex-direction: column;
+    max-width: 700px;
+    width: 635px;
+    min-height: 497px;
     background-color: #fff;
-    width: 600px;
-    min-height: 490px;
+    /* margin: 30px, auto ; */
     border-radius: 10px;
     padding: 25px;
-    margin: 30px, auto ;
 }
 
 .question-number h3 {
@@ -54,7 +54,7 @@ body {
 }
 
 .options div:hover {
-    background-color: #ccc;
+    background-color: #ccccccaf;
 }
 
 .options div.correct {
@@ -87,6 +87,12 @@ body {
     border-radius: 5px;
     cursor: pointer;
     border: none;
+    transition: all .2s ease-in-out;
+    margin-bottom: 15px;
+}
+
+.button #btn-next:hover {
+    background-color: #009687b6;
 }
 
 .button h3 {
@@ -102,31 +108,49 @@ body {
     margin-right: 10px;
 }
 
+.quiz-over-modal {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
 
-
-/* .option {
-    background-color: lightsteelblue ;
+.quiz-over-modal.active {
     display: flex;
-    align-items: center;
-    border-radius: 5px;
-    min-height: 50px;
-    padding-left: 10px;
-    cursor: pointer;
 }
 
-.question-number, #question, .option, .options, #btn-next {
-    margin-bottom: 10px;
+.quiz-over-modal .content {
+    background-color: darkcyan;
+    padding: 30px;
+    border-radius: 10px;
+    flex-basis: 700px;
+    max-width: 700px;
+    color: #fff;
+    text-align: center;
 }
 
-#btn-next {
-    background-color: teal;
-    color: white;
-    width: 150px;
-    height: 40px;
-    padding: 5px;
-    align-items: center;
-    border-radius: 7px;
-    box-shadow: none;
+.quiz-over-modal .content h1 {
+    font-size: 36px;
+    margin: 0 0 20px;
+}
+
+.quiz-over-modal .content button {
+    padding: 15px 50px;
     border: none;
+    background-color: #ff9800;
+    transition: all .2s ease-in-out;
+    border-radius: 10px;
     cursor: pointer;
-} */
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.quiz-over-modal .content button:hover {
+    background-color: #ff9800b4;
+}

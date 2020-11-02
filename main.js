@@ -1,9 +1,10 @@
-/* All answer options */
 const option1 = document.querySelector('.option1'),
         option2 = document.querySelector('.option2'),
         option3 = document.querySelector('.option3'),
         option4 = document.querySelector('.option4');
-/* All our options */
+
+const quizOverModal = document.querySelector('.quiz-over-modal');
+
 const optionElements = document.querySelectorAll('.option');
 
 const question = document.getElementById('question'),
@@ -12,7 +13,7 @@ const question = document.getElementById('question'),
         answersTracker = document.getElementById('answers-tracker'),
         btnNext = document.getElementById('btn-next'),
         correctAnswer = document.getElementById('correct-answer'),
-        numberOfAllQuestion2 = document.getElementById('number-pf-all-questions-2'),
+        numberOfAllQuestion2 = document.getElementById('number-of-all-questions-2'),
         btnTryAgain = document.getElementById('btn-try-again');
 
 let indexOfQuestion,  // index of current question
@@ -49,6 +50,26 @@ const questions = [
             'Плохо',
         ],
         rightAnswer: 3
+    },
+    {
+        question: 'В каком году был создан язык JavaScript? ',
+        options: [
+            '1992',
+            '1995',
+            '2000',
+            'Это тчательно охраняемвя гостайна',
+        ],
+        rightAnswer: 1
+    },
+    {
+        question: 'В какой области НЕ применяется JS? ',
+        options: [
+            'База данных',
+            'Искусственный интеллект',
+            'Нейролингвистическое программирование',
+            'Мобильные приложения',
+        ],
+        rightAnswer: 2
     } 
 ];
 
@@ -131,11 +152,20 @@ const answerTracker = () => {
 };
 
 const updateAnswerTracker = status => {
-    console.log(answersTracker.children);
-    console.log(status);
-    console.log(indexOfPage);
     answersTracker.children[indexOfPage - 1].classList.add(`${status}`);
-}
+};
+
+// функция, которая блокирует кнопку Next, если не выбран ни один вариант
+const validate = () => {
+    if(!optionElements[0].classList.contains('disabled')) {
+        alert('Вам нужно выбрать один из варинатов ответа');
+    } else {
+        randomQuestion();
+        enableOptions();
+    }
+};
+
+btnNext.addEventListener('click', validate);
 
 for(option of optionElements) {
     option.addEventListener('click', event => checkAnswer(event));
@@ -143,7 +173,16 @@ for(option of optionElements) {
 
 const quizOver = () => {
     console.log('Game over.');
+    quizOverModal.classList.add('active');
+    correctAnswer.innerHTML = score;
+    numberOfAllQuestion2.innerHTML = questions.length;
 };
+
+const tryAgain = () => {
+    window.location.reload();
+};
+
+btnTryAgain.addEventListener('click', tryAgain);
 
 window.addEventListener('load', () => {
     randomQuestion();
