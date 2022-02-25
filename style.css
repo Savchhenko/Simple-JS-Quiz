@@ -9,16 +9,19 @@ body {
     box-sizing: border-box; /* размер элемента будет включать в себя отступы */
 }
 
-.quiz-container {
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-    position: fixed; 
-    top: 30px;
-    left: 365px;
+.quiz-container {
+    margin-top: 50px;
     max-width: 700px;
     width: 635px;
     min-height: 497px;
     background-color: #fff;
-    /* margin: 30px, auto ; */
     border-radius: 10px;
     padding: 25px;
 }
