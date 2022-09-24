@@ -14,7 +14,8 @@ const question = document.getElementById('question'),
         btnNext = document.getElementById('btn-next'),
         correctAnswer = document.getElementById('correct-answer'),
         numberOfAllQuestion2 = document.getElementById('number-of-all-questions-2'),
-        btnTryAgain = document.getElementById('btn-try-again');
+        btnTryAgain = document.getElementById('btn-try-again'),
+        gameOverTitle = document.getElementById('quiz-over-title');
 
 let indexOfQuestion,  // index of current question
     indexOfPage = 0,  // index of the page
@@ -174,8 +175,23 @@ for(option of optionElements) {
 const quizOver = () => {
     console.log('Game over.');
     quizOverModal.classList.add('active');
+    gameOverTitle.innerHTML = showGameOverTitle(score);
     correctAnswer.innerHTML = score;
     numberOfAllQuestion2.innerHTML = questions.length;
+};
+
+const showGameOverTitle = (number) => {
+    let title = '';
+    if (number === 5) {
+        title = 'Отличная работа!';
+    } else if (number === 4) {
+        title = 'Хорошая работа, но будь внимательнее!';
+    } else if (number === 3 || number === 2) {
+        title = 'Ты молодец, то тебе предстоит еще многое изучить!';
+    } else if (number === 1 || number === 0) {
+        title = 'Похоже ты только начал изучать JavaScript, удачи в обучении!';
+    }
+    return title;
 };
 
 const tryAgain = () => {
